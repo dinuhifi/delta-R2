@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="box">
+<h2 style="text-align: center;">Register Page</h2><br>
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.username.label }}<br>
+        {{ form.username(size=32) }}<br><br>
+        {{ form.password.label }}<br>
+        {{ form.password(size=32) }}<br>
+        <p>{{ form.submit_register () }}</p>
+</form>
+</div>
+{% endblock %}

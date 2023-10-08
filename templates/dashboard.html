@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" typr="text/css" href="../static/styles/style.css"/>
+</head>
+<body>
+    <div style="background-color: #f6e8e8;">
+    <h1 style="text-align: center;">Tasks Manager Dashboard</h1>
+    <p style="text-align: center;">Welcome, {{ username }}!</p>
+    <p style="text-align: right; margin-right: 10%;">
+        <a style="margin-right: 2%;" href="{{ url_for('dashboard') }}">Return to Dashboard</a><a href="/logout">Logout</a></p>
+    </div>
+    <hr>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div>
+            {% for category, message in messages %}
+                <div class="flash-{{ category }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+    {% block content %}
+    <div style="text-align: center;">
+        <h1>Tasks</h1>
+        <p style="font-size: large;"><a href="/all-tasks">View All Tasks</a></p>
+        <p style="font-size: large;"><a href="/get-one-task">View a Task</a></p>
+        <p style="font-size: large;"><a href="/add-task">Add New Task</a></p>
+        <p style="font-size: large;"><a href="/update-task">Update Existing Task</a></p>
+        <p style="font-size: large;"><a href="/delete-task">Delete a Task</a></p>
+    </div>
+    {% endblock %}
+    <p class="bottom-right">Made By @dinesh.was.taken, at gunpoint by Delta (inspired from @hotaru_hspr)</p>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{% extends "dashboard.html" %}
+{% block content %}
+{% for i in data %}
+{% if i.user_id == user.id %}
+
+<div class="box1">
+<p>
+    <u>Task:</u> {{ i.task_id }}<br><br> <u>Task Name:</u> {{ i.task_name }}<br>
+    <u>Task Description:</u> {{ i.task_status }}<br>
+    <u>Task Deadline:</u> {{ i.task_deadline }}<br>
+    <u>Task Status:</u> {{ i.task_status }}<br>
+    <u>Task Priority:</u> {{ i.task_priority }}<br>
+</p>
+</div>
+
+{% endif %}
+{% endfor %}
+<button onclick="seeJson()">See JSON</button>
+<script>
+    function seeJson() {
+        window.location.href = "{{ url_for('get_tasks') }}";
+    }
+</script>
+{% endblock %}

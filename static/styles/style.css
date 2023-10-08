@@ -1,0 +1,50 @@
+.box {
+    border: 3px solid #000;
+    padding-left: 5%;
+    padding-right: 5%;
+    width: 16%;
+    margin: 0 auto;
+    background-color: #f6e8e8;
+}
+
+.box1 {
+    border: 2px solid #000;
+    padding-left: 5%;
+    padding-right: 5%;
+    width: 15%;
+    float: left;
+}
+
+a:visited {
+    color: #007bff;
+}
+
+.flash-success {
+    border: 3px solid #000;
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align: center;
+    background-color: #4CAF50;
+    color: white;
+    width: 16%;
+    margin: 0 auto;
+}
+
+.flash-danger {
+    border: 3px solid #000;
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align: center;
+    background-color: #c93f3f;
+    color: white;
+    width: 16%;
+    margin: 0 auto;
+}
+
+.bottom-right {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding-bottom: 10px;
+    padding-right: 20px;
+}

@@ -1,0 +1,8 @@
+{% extends "dashboard.html" %}
+{% block content %}
+<form class="box" action="" method="post">
+    {{ form.hidden_tag() }}
+    <p>{{ form.task_id.label }} {{ form.task_id(size=32) }} <br><br>
+        {{ form.submit() }}</p>
+</form>
+{% endblock %}

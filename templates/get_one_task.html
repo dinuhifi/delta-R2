@@ -1,0 +1,28 @@
+{% extends "dashboard.html" %}
+{% block content %}
+<form class="box" action="" method="post">
+    {{ form.hidden_tag() }}
+    <p>{{ form.task_id.label }} {{ form.task_id(size=32) }} <br><br>
+        {{ form.submit() }}</p>
+</form>
+
+{% if data %}
+
+<div class="box1">
+<p>
+    <u>Task:</u> {{ data.task_id }}<br><br> <u>Task Name:</u> {{ data.task_name }}<br>
+    <u>Task Description:</u> {{ data.task_status }}<br>
+    <u>Task Deadline:</u> {{ data.task_deadline }}<br>
+    <u>Task Status:</u> {{ data.task_status }}<br>
+    <u>Task Priority:</u> {{ data.task_priority }}<br>
+</p>
+</div>  
+
+{% endif %}
+<button onclick="seeJson()">See JSON</button>
+<script>
+    function seeJson() {
+        window.location.href = "{{ url_for('get_task') }}";
+    }
+</script>
+{% endblock %}
