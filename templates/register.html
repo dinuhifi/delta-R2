@@ -1,15 +1,16 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="box">
-<h2 style="text-align: center;">Register Page</h2><br>
-<form action="" method="post">
-    {{ form.hidden_tag() }}
-    <p>
-        {{ form.username.label }}<br>
-        {{ form.username(size=32) }}<br><br>
-        {{ form.password.label }}<br>
-        {{ form.password(size=32) }}<br>
-        <p>{{ form.submit_register () }}</p>
-</form>
+<div class="form">
+    <h1>Register Page</h1><br>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+                <div class="input">{{ form.username.label(class="input-label") }}
+                {{ form.username(size=32, class="input-txtbox") }}</div><br>
+                <div class="input">{{ form.password.label(class="input-label") }}
+                {{ form.password(size=32, class="input-txtbox") }}</div><br>
+            <div class="input-submit"><p>{{ form.submit_register(class="input-button") }}</p></div></p>
+    </form>
 </div>
+<br><br><br>
 {% endblock %}

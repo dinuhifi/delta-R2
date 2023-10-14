@@ -1,29 +1,33 @@
 {% extends "dashboard.html" %}
 {% block content %}
-<p style="text-align: center;">Task ID and Deadline Fields are Mandatory.<br>Fill only those Fields that requires change.<br>Enter Task Deadline field in this format: 'YYYY-MM-DD HH:MM:SS'</p>
-<div class="box">
-<h2 style="text-align: center;">Update Tasks</h2>
-<form action="" method="post">
-    {{ form.hidden_tag() }}
-    <p>
-        {{ form.task_id.label }}<br>
-        {{ form.task_id(size=32) }}<br>
-
-        {{ form.task_name.label }}<br>
-        {{ form.task_name(size=32) }}<br>
-
-        {{ form.task_description.label }}<br>
-        {{ form.task_description(size=32) }}<br>
-
-        {{ form.task_deadline.label }}<br>
-        {{ form.task_deadline(size=32) }}<br>
-
-        {{ form.task_status.label }}<br>
-        {{ form.task_status(size=32) }}<br>
-
-        {{ form.task_priority.label }}<br>
-        {{ form.task_priority(size=32) }}<br>
+<br><br>
+<div class="dashboard-form">
+    <h1>Update Tasks</h1>
+    <p>Task ID and Deadline Fields are Mandatory.
+        <br>Fill only those Fields that requires change.
+        <br>Enter Task Deadline field in this format: 'YYYY-MM-DD HH:MM:SS'</p><br><br>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
         
-        <p>{{ form.submit () }}</p>
-    </div>
+            <div class="input">{{ form.task_id.label(class="input-label") }}
+            {{ form.task_id(size=32, class="input-txtbox") }}</div><br>
+
+            <div class="input">{{ form.task_name.label(class="input-label") }}
+            {{ form.task_name(size=32, class="input-txtbox") }}</div><br>
+
+            <div class="input">{{ form.task_description.label(class="input-label") }}
+            {{ form.task_description(size=32, class="input-txtbox") }}</div><br>
+
+            <div class="input">{{ form.task_deadline.label(class="input-label") }}
+            {{ form.task_deadline(size=32, class="input-txtbox") }}</div><br>
+
+            <div class="input">{{ form.task_status.label(class="input-label") }}
+            {{ form.task_status(size=32, class="input-txtbox") }}</div><br>
+
+            <div class="input">{{ form.task_priority.label(class="input-label") }}
+            {{ form.task_priority(size=32, class="input-txtbox") }}</div><br>
+            
+            <div class="input-submit">{{ form.submit(class="input-button") }}</div>
+</div>
+<br><br><br>
 {% endblock %}

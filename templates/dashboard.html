@@ -1,36 +1,82 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard</title>
-    <link rel="stylesheet" typr="text/css" href="../static/styles/style.css"/>
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content= "width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" type="text/css" href="../static/styles/style.css"/>
+    <title>TaskHub ~ Dashboard</title>
 </head>
 <body>
-    <div style="background-color: #f6e8e8;">
-    <h1 style="text-align: center;">Tasks Manager Dashboard</h1>
-    <p style="text-align: center;">Welcome, {{ username }}!</p>
-    <p style="text-align: right; margin-right: 10%;">
-        <a style="margin-right: 2%;" href="{{ url_for('dashboard') }}">Return to Dashboard</a><a href="/logout">Logout</a></p>
-    </div>
-    <hr>
+
+    <nav>
+        <div class="heading">TaskHub Dashboard
+            <p>Welcome, {{ username }}</p>
+        </div>
+        <span class="sideMenuButton" onclick="openNavbar()">☰</span>
+
+        <div class="navbar">
+            <ul>
+                <li><a href="{{ url_for('dashboard') }}">Return to Dashboard</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="sideNavigationBar" 
+        id="sideNavigationBar">
+        <a href="#" 
+            class="closeButton" 
+            onclick="closeNavbar()">❌
+        </a>
+        <a href="{{ url_for('dashboard') }}">Return to Dashboard</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div> 
+
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
         <div>
+            <br>
             {% for category, message in messages %}
-                <div class="flash-{{ category }}">{{ message }}</div>
+                <div class="flash-{{ category }}">{{ category }}! {{ message }}</div>
             {% endfor %}
+            <br>
         </div>
     {% endif %}
-{% endwith %}
+    {% endwith %}
     {% block content %}
-    <div style="text-align: center;">
-        <h1>Tasks</h1>
-        <p style="font-size: large;"><a href="/all-tasks">View All Tasks</a></p>
-        <p style="font-size: large;"><a href="/get-one-task">View a Task</a></p>
-        <p style="font-size: large;"><a href="/add-task">Add New Task</a></p>
-        <p style="font-size: large;"><a href="/update-task">Update Existing Task</a></p>
-        <p style="font-size: large;"><a href="/delete-task">Delete a Task</a></p>
+    <br><br>
+    <div class="dashboard">
+        <h1>Your Tasks</h1><br><br><br><br>
+        <grid>
+            <p><a href="/all-tasks">View All Tasks</a></p>
+            <p><a href="/get-one-task">View a Task</a></p>
+            <p><a href="/add-task">Add New Task</a></p>
+            <p ><a href="/update-task">Update Existing Task</a></p>
+            <p><a href="/delete-task">Delete a Task</a></p>
+        </grid>
     </div>
     {% endblock %}
-    <p class="bottom-right">Made By @dinesh.was.taken, at gunpoint by Delta (inspired from @hotaru_hspr)</p>
+
+    <footer>
+        <div class="footer1">
+            <a class="links" href="https://github.com/dinuhifi" target="_blank"><img src="../static/images/githublogo.png" width="40"><span>My GitHub Page</span></a>
+            <a class="links" href="https://discordapp.com/users/708875392278200361" target="_blank"><img src="../static/images/discordlogo.png" width="40"><span>Text me on Discord</span></a>
+            <span>
+                Created By @dinesh.was.taken, at gunpoint by Delta (inspired from @hotaru_hspr)
+            </span>
+        </div>
+    </footer>
+
+    <script>
+        function openNavbar() {
+            document.getElementById("sideNavigationBar").style.width = "250px";
+        }
+    
+        function closeNavbar() {
+            document.getElementById("sideNavigationBar").style.width = "0";
+        }
+    </script>
+    
 </body>
 </html>

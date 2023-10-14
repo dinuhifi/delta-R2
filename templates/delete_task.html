@@ -1,8 +1,14 @@
 {% extends "dashboard.html" %}
 {% block content %}
-<form class="box" action="" method="post">
-    {{ form.hidden_tag() }}
-    <p>{{ form.task_id.label }} {{ form.task_id(size=32) }} <br><br>
-        {{ form.submit() }}</p>
-</form>
+<br><br>
+<div class="dashboard-form">
+    <h1>Update Tasks</h1><br><br>
+    <form action="" method="post">
+        <div class="input">{{ form.hidden_tag() }}</div>
+        <div class="input">{{ form.task_id.label(class="input-label") }}</div>
+        <div class="input">{{ form.task_id(size=32, class="input-txtbox") }}</div><br>
+        <div class="input-submit">{{ form.submit(class="input-button") }}</div>
+    </form>
+</div>
+<br><br><br>
 {% endblock %}

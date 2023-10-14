@@ -1,35 +1,137 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content= "width=device-width, initial-scale=1.0"> 
     <link rel="stylesheet" type="text/css" href="../static/styles/style.css"/>
-    <title>TASKS MANAGER API</title>
-    <div style="background-color: #f6e8e8;">
-    <h1 style="text-align: center;">TASKS MANAGER API</h1>
-    <div style="text-align: right;">
-        <a style="margin-left: 10px; margin-right: 10px;" href="{{ url_for('home') }}">Home</a>
-        <a style="margin-left: 10px; margin-right: 10px;" href="{{ url_for('login') }}">Login</a>
-        <a style="margin-left: 10px; margin-right: 10px;" href="{{ url_for('register') }}">Register</a></div>
-    </div>
-        <hr>
+    <title>TaskHub</title>
 </head>
 <body>
+    <nav>
+        <div class="heading">TaskHub</div>
+        <span class="sideMenuButton" onclick="openNavbar()">☰</span>
+
+        <div class="navbar">
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('login') }}">Login</a></li>
+                <li><a href="{{ url_for('register') }}">Register</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="sideNavigationBar" 
+        id="sideNavigationBar">
+        <a href="#" 
+            class="closeButton" 
+            onclick="closeNavbar()">❌
+        </a>
+        <a href="{{ url_for('home') }}">Home</a>
+        <a href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('register') }}">Register</a>
+    </div> 
+
+
+    <div class="line" id="Home">
+        <div class="side1">
+            <h1>TaskHub: Fueling Your Productivity Hormones</h1>
+            <p>Streamlining Task Management through a Simple and Efficient API</p>
+        </div>
+
+        <div class="side2">
+            <img src="../static/images/bg.jpeg" width="500">
+        </div>
+    </div>
+
+    <section class="about" id="Info">
+        <div class="content">
+            <div class="title">
+                <span>About this API</span>
+            </div>
+            <div class="boxes">
+
+                <div class="box">
+                    <div class="topic">
+                        <a href="" target="_blank"> 
+                            What is TaskHub?
+                        </a>
+                    </div>
+                    <p>
+                        <br>Welcome to TaskHub API<br>
+                        This is a basic Tasks Manager Web App<br>built from scratch using Python.<br>
+                        You can perform CRUD Operations using<br>a interactive GUI to store data.<br>
+                    </p>
+                </div>
+
+                <div class="box">
+                    <div class="topic">
+                        <a href="" target="_blank"> 
+                            Special Features
+                        </a>
+                    </div>
+                    <p>
+                        <br>1. Toggle between html view<br>or JSON view of the tasks.<br>
+                        2. Easy to perform CRUD operations on tasks.<br>
+                        3. Secure User registration and<br> login system with password hashing.<br>
+                        4. Rate Limiting<br>
+                        5. Error Handling<br>
+                        Login (or) register to start using the API.
+                    </p>
+                </div>
+
+                <div class="box">
+                    <div class="topic">
+                        <a href="" target="_blank"> 
+                            API Endpoints
+                        </a>
+                    </div>
+                    <p>
+                        <br>1. /get-tasks - Get all tasks<br>
+                        2. /get-one-task - Get a specific task<br>
+                        3. /add-task - Add a task<br>
+                        4. /update-task - Update a task<br>
+                        5. /delete-task - Delete a task
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <br><br><br>
+
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
         <div>
+            <br>
             {% for category, message in messages %}
-                <div class="flash-{{ category }}">{{ message }}</div>
+                <div class="flash-{{ category }}">{{ category }}! {{ message }}</div>
             {% endfor %}
+            <br>
         </div>
     {% endif %}
-{% endwith %}
-    <br><p style="font-size: larger; text-align: center;">Welcome to Tasks Manager API<br>You can Add, View, Update or Delete Tasks.<br>
-        You can view the Tasks altogether or any specific task seperately.<br>
-        Special Features:<br>1. Toggle between html view or JSON view of the tasks.<br>2. Easy to perform CRUD operations on tasks.
-        <br>3. Secure User registration and login system with password hashing.
-        <br>4. Rate Limiting
-        <br>Login (or) register to start using the API.</p>
-
-        <p class="bottom-right">Made By @dinesh.was.taken, at gunpoint by Delta (inspired from @hotaru_hspr)</p>
+    {% endwith %}
     {% block content %} {% endblock %}
+
+    <footer>
+        <div class="footer">
+            <a class="links" href="https://github.com/dinuhifi" target="_blank"><img src="../static/images/githublogo.png" width="40"><span>My GitHub Page</span></a>
+            <a class="links" href="https://discordapp.com/users/708875392278200361" target="_blank"><img src="../static/images/discordlogo.png" width="40"><span>Text me on Discord</span></a>
+            <span>
+                Created By @dinesh.was.taken, at gunpoint by Delta (inspired from @hotaru_hspr)
+            </span>
+        </div>
+    </footer>
+
+<script>
+    function openNavbar() {
+        document.getElementById("sideNavigationBar").style.width = "250px";
+    }
+
+    function closeNavbar() {
+        document.getElementById("sideNavigationBar").style.width = "0";
+    }
+</script>
+
 </body>
 </html>

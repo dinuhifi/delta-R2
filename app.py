@@ -79,18 +79,29 @@ def add_task():
 @limiter.limit("10 per minute")
 def update_task():
     form = UpdateTaskForm()
-    data = Task.query.all()
-    for i in data:
-        if i.user_id == current_user.id and i.task_id == form.task_id.data:
-            if form.validate_on_submit():
-                i.task_name = form.task_name.data if form.task_name.data else i.task_name
-                i.task_description = form.task_description.data if form.task_description.data else i.task_description
-                i.task_deadline = form.task_deadline.data if form.task_deadline.data else i.task_deadline
-                i.task_status = form.task_status.data if form.task_status.data else i.task_status
-                i.task_priority = form.task_priority.data if form.task_priority.data else i.task_priority
-                db.session.commit()
-                flash('Task updated successfully.', 'success')
-                return redirect(url_for('dashboard'))
+    if form.validate_on_submit():
+        data = Task.query.get(form.task_id.data)
+        if data:
+            if data.user_id == current_user.id:
+                if data.task_id == form.task_id.data:
+                    data.task_name = form.task_name.data if form.task_name.data else data.task_name
+                    data.task_description = form.task_description.data if form.task_description.data else data.task_description
+                    data.task_deadline = form.task_deadline.data if form.task_deadline.data else data.task_deadline
+                    data.task_status = form.task_status.data if form.task_status.data else data.task_status
+                    data.task_priority = form.task_priority.data if form.task_priority.data else data.task_priority
+                    db.session.commit()
+                    flash('Task updated successfully.', 'success')
+                    return redirect(url_for('dashboard'))
+                else:
+                    flash('Task not found.', 'danger')
+                    return redirect(url_for('update_task'))
+            else:
+                flash('Task not found.', 'danger')
+                return redirect(url_for('update_task'))
+        else:
+            flash('Task not found.', 'danger')
+            return redirect(url_for('update_task'))
+            
     return render_template('update_task.html', form=form, username=current_user.username)
 
 @app.route("/get-tasks")
@@ -229,6 +240,14 @@ def logout():
     logout_user()
     flash('Logged out successfully.', 'success')
     return redirect(url_for('home'))
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return f"<h1>Error 404: Page not found.</h1><br><a href='/'>Go back to home page.</a>"
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    return f"<h1>Error 500: Internal Server Error.</h1><br><a href='/'>Go back to home page.</a>"
 
 if __name__ == "__main__":
     app.app_context().push()
