@@ -1,6 +1,6 @@
 # delta-R2
 
-# TASKS MANAGER API
+# TaskHub API
 
 ## With this API, you can Add, Update, View, and Delete Tasks.
 ## Some of the API's special features are:
@@ -9,7 +9,7 @@
 3. Secure User registration and login system with password hashing.
 4. Rate Limiting.
 
-### THIS API HAS BEEN HOSTED IN `https://task-hub-jade.vercel.app/` (does not work though idk why and im fixing it)
+*THIS API HAS BEEN HOSTED IN `https://task-hub-jade.vercel.app/` (does not work though idk why and im fixing it)*
 
 ## HOW TO USE?
 
