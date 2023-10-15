@@ -9,6 +9,8 @@
 3. Secure User registration and login system with password hashing.
 4. Rate Limiting.
 
+### THIS API HAS BEEN HOSTED IN `https://task-hub-jade.vercel.app/` (does not work though idk why and im fixing it)
+
 ## HOW TO USE?
 
 1. Make sure you have python and git installed on your machine.
